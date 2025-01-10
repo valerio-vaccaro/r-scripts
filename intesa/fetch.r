@@ -12,7 +12,7 @@ library(ggpmisc)
 library(lubridate)
 
 download_history <- function(stock) {
-  obj <- Ticker$new(stock)$get_history(period='2y')
+  obj <- Ticker$new(stock)$get_history(period='5y')
   # covert data format
   obj$date <- as.Date(obj$date)
   # calculate value
@@ -56,12 +56,12 @@ for (x in stocks) {
   g = ggplot(obj, aes(x=date, y=value)) + 
     geom_line() + 
     geom_smooth(se = FALSE) +
-    stat_peaks(geom = "point", span = 15, color = "steelblue3", size = 1) +
-    stat_peaks(geom = "label", span = 15, color = "steelblue3", angle = 0, hjust = -0.1, x.label.fmt = "%Y-%m-%d") +
-    stat_peaks(geom = "rug", span = 15, color = "blue", sides = "b") +
-    stat_valleys(geom = "point", span = 11, color = "red", size = 1) +
-    stat_valleys(geom = "label", span = 11, color = "red", angle = 0, hjust = -0.1, x.label.fmt = "%Y-%m-%d") +
-    stat_valleys(geom = "rug", span = 11, color = "red", sides = "b")
+    stat_peaks(geom = "point", span = 61, color = "steelblue3", size = 1) +
+    stat_peaks(geom = "label", span = 61, color = "steelblue3", angle = 0, hjust = -0.1, x.label.fmt = "%Y-%m-%d") +
+    stat_peaks(geom = "rug", span = 61, color = "blue", sides = "b") +
+    stat_valleys(geom = "point", span = 61, color = "red", size = 1) +
+    stat_valleys(geom = "label", span = 61, color = "red", angle = 0, hjust = -0.1, x.label.fmt = "%Y-%m-%d") +
+    stat_valleys(geom = "rug", span = 61, color = "red", sides = "b")
   
   filename = paste(x, '_value.png', sep = '')
   ggsave(filename = filename, g, width = 10, height = 6, dpi = 150, units = "in", device='png')
