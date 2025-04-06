@@ -1,32 +1,106 @@
 <!DOCTYPE html>
 <html>
-<body>
-<h2>BTCIllustrated.com</h2>
+<head>
+    <title>BTCIllustrated.com</title>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script> 
+      $(function(){
+        $("#includedTimestamp").load("update.txt"); 
+      });
+    </script> 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .chart-container {
+            margin-bottom: 2rem;
+        }
+        .chart-image {
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .container-95 {
+            width: 95%;
+            max-width: 95%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container-95 py-5">
+        <header class="text-center mb-5">
+            <h1 class="display-4">BTCIllustrated.com</h1>
+            <p class="lead">Bitcoin Blockchain Visualizations</p>
+        </header>
 
-<h3></h3>
-<p></p>
-<p></p>
-<hr/>
+        <div class="row">
+            <!-- ScriptPubKeys Section -->
+            <div class="col-12 chart-container">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">ScriptPubKeys Distribution</h3>
+                        <p class="card-text">
+                            <a href="scriptpubkeys.html" target="_blank" class="btn btn-outline-primary btn-sm">Details</a>
+                        </p>
+                        <a href="scriptpubkeys_full.png" target="_blank">
+                            <img src="scriptpubkeys_full.png" class="img-fluid chart-image" alt="ScriptPubKeys Distribution">
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-<h3>ScriptPubKeys distribution!</h3>
-<p><a href="scriptpubkeys.html" target="_blamk">Details</a></p>
-<p><a href="scriptpubkeys_full.png" target="_blank"><img src="scriptpubkeys_full.png" width="100%" height="auto"></a></p>
-<hr/>
+            <!-- Block Delay Section -->
+            <div class="col-12 chart-container">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">Delay between two blocks</h3>
+                        <p class="card-text">
+                            <a href="delta.html" target="_blank" class="btn btn-outline-primary btn-sm">Details</a>
+                        </p>
+                        <a href="delta_full.png" target="_blank">
+                            <img src="delta_full.png" class="img-fluid chart-image" alt="Block Delay Distribution">
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-<h3>Delay between two blocks!</h3>
-<p><a href="delta.html" target="_blamk">Details</a></p>
-<p><a href="delta_full.png" target="_blank"><img src="delta_full.png" width="100%" height="auto"></a></p>
-<hr/>
+            <!-- Nonce Distribution Section -->
+            <div class="col-12 chart-container">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">Nonce Distribution</h3>
+                        <p class="card-text">
+                            <a href="nonce.html" target="_blank" class="btn btn-outline-primary btn-sm">Details</a>
+                        </p>
+                        <a href="nonce_full.png" target="_blank">
+                            <img src="nonce_full.png" class="img-fluid chart-image" alt="Nonce Distribution">
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-<h3>Nonce distribution!</h3>
-<p><a href="nonce.html" target="_blamk">Details</a></p>
-<p><a href="nonce_full.png" target="_blank"><img src="nonce_full.png" width="100%" height="auto"></a></p>
-<hr/>
+            <!-- Source Code Section -->
+            <div class="col-12 chart-container">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">Source Code and Dataset</h3>
+                        <div class="card-text">
+                            <p>Charts are generated in R using scripts available in the GitHub repo <a href="https://github.com/valerio-vaccaro/r-scripts" target="_blank" class="btn btn-outline-secondary btn-sm">r-scripts</a>.</p>
+                            <p>Information are extracted from the Bitcoin blockchain using:</p>
+                            <ul class="list-unstyled">
+                                <li><a href="https://github.com/RCasatta/blocks_iterator" target="_blank" class="btn btn-outline-secondary btn-sm">blocks_iterator</a> (tnx Riccardo!)</li>
+                                <li><a href="https://github.com/valerio-vaccaro/scriptpubkeys_per_block" target="_blank" class="btn btn-outline-secondary btn-sm">scriptpubkeys_per_block</a></li>
+                            </ul>
+                            <p>You can download the <a href="scriptpubkeys_per_block.csv" target="_blank" class="btn btn-outline-secondary btn-sm">Dataset</a> used for these charts and update daily.</p>
+                            <p>Last update on:  <div id="includedTimestamp"></div></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<h3>Source code and dataset</h3>
-<p>Charts are generated in R using scripts available in the GitHub repo  <a href="https://github.com/valerio-vaccaro/r-scripts" target="_blamk">r-scripts</a>.</p>
-<p>Information are extracted from the Bitcoin blockchain using <a href="https://github.com/RCasatta/blocks_iterator" target="_blamk">blocks_iterator</a> (tnx Riccardo!) and <a href="https://github.com/valerio-vaccaro/scriptpubkeys_per_block" target="_blamk">scriptpubkeys_per_block</a>.</p>
-<p>You can download the <a href="scriptpubkeys_per_block.csv" target="_blamk">Dataset</a> used for these charts and update daily.</p>
-
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
