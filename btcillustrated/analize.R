@@ -1,5 +1,11 @@
 setwd("~/r-scripts/btcillustrated")
 
+# Install and load required packages
+if (!requireNamespace("dplyr", quietly = TRUE)) install.packages("dplyr")
+if (!requireNamespace("ggplot2", quietly = TRUE)) install.packages("ggplot2")
+if (!requireNamespace("lubridate", quietly = TRUE)) install.packages("lubridate")
+if (!requireNamespace("reshape2", quietly = TRUE)) install.packages("reshape2")
+
 library(dplyr)
 library(ggplot2)
 library(lubridate)
