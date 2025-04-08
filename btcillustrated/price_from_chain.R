@@ -15,11 +15,13 @@ price <- read_csv("price2.csv", col_names = FALSE)
 names(price) <- seq(1, 1120)
 price$block <- (seq.int(nrow(price)) - 1) * 288
 
-heatmap_data_long <- melt(price, id.vars = "block", 
+heatmap_data_long <- melt(price, id.vars = "block",
                           variable.name = "Measurement", 
                           value.name = "Value")
 
-df <- heatmap_data_long[heatmap_data_long$block < 2000000, ]
+heatmap_data_long$Measurement <- max(as.integer(heatmap_data_long$Measurement)) - as.integer(heatmap_data_long$Measurement) + 1
+
+df <- heatmap_data_long[heatmap_data_long$block < 300000, ]
 df$Measurement <- as.integer(df$Measurement)
 df <- df[df$Value > 0, ]
 g <- ggplot(df, aes(x = block, y = Measurement, colour = log(Value))) +
@@ -62,5 +64,5 @@ g <- ggplot(df, aes(x = block, y = Measurement, colour = log(Value))) +
   ggtitle("Output size distribution") +
   xlab("Height") + 
   ylab("Amount distribution")
-ggsave(filename = "output_size_full.png", g, width = 10000, height = 2000,  units = "px", device="png")
+ggsave(filename = "price_size_full.png", g, width = 10000, height = 2000,  units = "px", device="png")
 
