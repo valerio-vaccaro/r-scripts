@@ -21,7 +21,7 @@ heatmap_data_long <- melt(price, id.vars = "block",
 
 heatmap_data_long$Measurement <- max(as.integer(heatmap_data_long$Measurement)) - as.integer(heatmap_data_long$Measurement) + 1
 
-df <- heatmap_data_long[heatmap_data_long$block < 300000, ]
+df <- heatmap_data_long[heatmap_data_long$block < 3000000, ]
 df$Measurement <- as.integer(df$Measurement)
 df <- df[df$Value > 0, ]
 g <- ggplot(df, aes(x = block, y = Measurement, colour = log(Value))) +
